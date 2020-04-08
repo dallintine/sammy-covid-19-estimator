@@ -1,10 +1,6 @@
 const covid19ImpactEstimator = (data) => {
 const input = data;
-    return { data, impact, severeImpact };
-};
-
-const covid19ImpactEstimator = (data) => {
-    const estimator = chain(
+const estimator = chain(
         estiomateCurrentlyInfected,
         estimatePrjectedInfections,
 
@@ -15,7 +11,7 @@ const covid19ImpactEstimator = (data) => {
         estmateCasesForVentilotors,
         estimateDollarsInFlight
     );
-
+return { data, impact, severeImpact };
     return estimator({
         data,
         impact: {},
