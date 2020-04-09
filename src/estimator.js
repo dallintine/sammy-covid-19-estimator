@@ -1,4 +1,4 @@
-const covid19ImpactEstimator = (data) => data;
+// const covid19ImpactEstimator = (data) => data;
 export const impactCases = (data) => {
     const{
         periodType,
