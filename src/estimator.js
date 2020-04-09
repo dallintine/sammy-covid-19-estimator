@@ -24,22 +24,22 @@ return{
 // };
 
 // const covid19ImpactEstimators = (data) => {
-const estimator = chain(
-        estiomateCurrentlyInfected,
-        estimatePrjectedInfections,
+// const estimator = chain(
+//         estiomateCurrentlyInfected,
+//         estimatePrjectedInfections,
     
-        estmateServereCases,
-        estimateBedSpeceAvailability,
+//         estmateServereCases,
+//         estimateBedSpeceAvailability,
 
-        estimateCasesForICU,
-        estmateCasesForVentilotors,
-        estimateDollarsInFlight
-    );
-    return estimator({
-        data,
-        impact: {},
-        severeImpact: {}
-    });
+//         estimateCasesForICU,
+//         estmateCasesForVentilotors,
+//         estimateDollarsInFlight
+//     );
+//     return estimator({
+//         data,
+//         impact: {},
+//         severeImpact: {}
+//     });
     
 };
 
