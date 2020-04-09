@@ -1,5 +1,5 @@
 const covid19ImpactEstimator = (data) => data;
-export const impact = (data) => {
+export const impactCases = (data) => {
     const{
         periodType,
         timeToElapse,
