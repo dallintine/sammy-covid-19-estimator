@@ -1,9 +1,9 @@
 const covid19ImpactEstimator = (data) => {
     {
-    data,
-    impact; impactCases(data),
-    severeImpact; severeImpactCases(data)
-   }
+        data,
+        impact; impactCases(data),
+        severeImpact; severeImpactCases(data)
+    }
 };
 
 export const impactCases = (data) => {
@@ -25,7 +25,7 @@ export const impactCases = (data) => {
     const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
     const toTwoDecimal = dollerOut.toFixed(2);
     const dollersInFlight = Number(toTwoDecimal);
-
+    
     return {
         currentlyInfected,
         infectionsByRequestedTime,
@@ -56,7 +56,7 @@ export const severeImpactCases = (data) => {
     const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
     const toTwoDecimal = dollerOut.toFixed(2);
     const dollersInFlight = Number(toTwoDecimal);
-
+    
     return {
         currentlyInfected,
         infectionsByRequestedTime,
@@ -67,6 +67,4 @@ export const severeImpactCases = (data) => {
         dollersInFlight
     };
 };
-
-
 export default covid19ImpactEstimator;
