@@ -1,4 +1,11 @@
-// const covid19ImpactEstimator = (data) => data;
+const covid19ImpactEstimator = (data) =>  {
+    {
+    data,
+    impact; impactCases(data),
+    severeImpact; severeImpactCases(data)
+   }
+};
+
 export const impactCases = (data) => {
     const {
         periodType,
@@ -60,13 +67,6 @@ export const severeImpactCases = (data) =>{
         dollersInFlight
     };
 };
-const covid19ImpactEstimator = (data) =>  
-{
-    {
-    data,
-    impact; impactCases(data),
-    severeImpact; severeImpactCases(data)
-   }
-};
+
 
 export default covid19ImpactEstimator;
