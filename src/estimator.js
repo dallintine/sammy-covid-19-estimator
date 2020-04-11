@@ -15,8 +15,8 @@ const impactCases = (data) => {
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
-  const toTwoDecimal = dollerOut.toFixed(2);
-  const dollersInFlight = Number(toTwoDecimal);
+  const dollersInFlight = dollerOut.toFixed(2);
+  
 
   return {
     currentlyInfected,
@@ -45,8 +45,8 @@ const severeImpactCases = (data) => {
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
-  const toTwoDecimal = dollerOut.toFixed(2);
-  const dollersInFlight = Number(toTwoDecimal);
+  const dollersInFlight = dollerOut.toFixed(2);
+ 
 
   return {
     currentlyInfected,
