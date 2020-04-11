@@ -1,12 +1,4 @@
-const covid19ImpactEstimator = (data) => {
-  {
-    data,
-    impact; impactCases(data),
-    severeImpact; severeImpactCases(data)
-  };
-};
-
-export const impactCases = (data) => {
+const impactCases = (data) => {
   const {
     periodType,
     timeToElapse,
@@ -36,7 +28,7 @@ export const impactCases = (data) => {
     dollersInFlight
   };
 };
-export const severeImpactCases = (data) => {
+const severeImpactCases = (data) => {
   const {
     periodType,
     timeToElapse,
@@ -64,6 +56,14 @@ export const severeImpactCases = (data) => {
     casesForICUByRequestedTime,
     casesForVentilatorByRequestedTime,
     dollersInFlight
+  };
+};
+
+export const covid19ImpactEstimator = (data) => {
+  {
+    data,
+      impact; impactCases(data),
+        severeImpact; severeImpactCases(data)
   };
 };
 export default covid19ImpactEstimator;
