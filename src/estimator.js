@@ -1,3 +1,4 @@
+const convertToDays = (data) => data;
 const impactCases = (data) => {
   const {
     periodType,
@@ -16,7 +17,7 @@ const impactCases = (data) => {
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
   const dollersInFlight = dollerOut.toFixed(2);
-  
+
 
   return {
     currentlyInfected,
@@ -28,6 +29,7 @@ const impactCases = (data) => {
     dollersInFlight
   };
 };
+
 const severeImpactCases = (data) => {
   const {
     periodType,
@@ -46,7 +48,7 @@ const severeImpactCases = (data) => {
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopultion * region.avgDailyIncomeInUSD * timeInDays;
   const dollersInFlight = dollerOut.toFixed(2);
- 
+
 
   return {
     currentlyInfected,
@@ -59,11 +61,13 @@ const severeImpactCases = (data) => {
   };
 };
 
- const covid19ImpactEstimator = (data) => {
-  {
+const covid19ImpactEstimator = (data) => {
+  const impact = impactCases(data);
+  const severeImpact = severeImpactCases(data);
+  return {
     data,
-      impact; impactCases(data),
-        severeImpact; severeImpactCases(data);
-  }
+    impact,
+    severeImpact
+  };
 };
 export default covid19ImpactEstimator;
