@@ -63,7 +63,7 @@ const severeImpactCases = (data) => {
   {
     data,
       impact; impactCases(data),
-        severeImpact; severeImpactCases(data)
-  };
+        severeImpact; severeImpactCases(data);
+  }
 };
 export default covid19ImpactEstimator;
