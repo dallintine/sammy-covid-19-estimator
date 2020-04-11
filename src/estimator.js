@@ -44,7 +44,7 @@ const severeImpactCases = (data) => {
   const hospitalBedsByResquestedTime = hospitalBedsAvailable - severCasesByRequestedTime;
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
-  const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
+  const dollerOut = region.avgDailyIncomePopultion * region.avgDailyIncomeInUSD * timeInDays;
   const dollersInFlight = dollerOut.toFixed(2);
  
 
@@ -59,7 +59,7 @@ const severeImpactCases = (data) => {
   };
 };
 
-export const covid19ImpactEstimator = (data) => {
+ const covid19ImpactEstimator = (data) => {
   {
     data,
       impact; impactCases(data),
