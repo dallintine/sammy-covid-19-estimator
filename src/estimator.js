@@ -1,4 +1,14 @@
-const convertToDays = (data) => data;
+const convertToDays = (periodType, timeToElapse) => {
+  switch (periodType) {
+    case 'months':
+      return timeToElapse * 30;
+    case 'weeks':
+      return timeToElapse * 7;
+    default:
+      return timeToElapse;
+  }
+};
+
 const impactCases = (data) => {
   const {
     periodType,
