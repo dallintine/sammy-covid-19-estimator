@@ -22,7 +22,7 @@ const impactCases = (data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3).toFixed());
   const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
@@ -31,7 +31,7 @@ const impactCases = (data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByResquestedTime,
+    hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorByRequestedTime,
     dollersInFlight
@@ -51,7 +51,7 @@ const severeImpactCases = (data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3).toFixed());
   const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopultion * region.avgDailyIncomeInUSD * timeInDays;
@@ -60,7 +60,7 @@ const severeImpactCases = (data) => {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByResquestedTime,
+    hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorByRequestedTime,
     dollersInFlight
