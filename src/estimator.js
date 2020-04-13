@@ -20,9 +20,9 @@ const impactCases = (data) => {
   const currentlyInfected = reportedCases * 10;
   const timeInDays = convertToDays(periodType, timeToElapse);
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3).toFixed());
-  const severCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
+  const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severCasesByRequestedTime;
+  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
@@ -30,7 +30,7 @@ const impactCases = (data) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severCasesByRequestedTime,
+    severeCasesByRequestedTime,
     hospitalBedsByResquestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorByRequestedTime,
@@ -49,9 +49,9 @@ const severeImpactCases = (data) => {
   const currentlyInfected = reportedCases * 50;
   const timeInDays = convertToDays(periodType, timeToElapse);
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3).toFixed());
-  const severCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
+  const severeCasesByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.15);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severCasesByRequestedTime;
+  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const dollerOut = region.avgDailyIncomePopultion * region.avgDailyIncomeInUSD * timeInDays;
@@ -59,7 +59,7 @@ const severeImpactCases = (data) => {
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severCasesByRequestedTime,
+    severeCasesByRequestedTime,
     hospitalBedsByResquestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorByRequestedTime,
