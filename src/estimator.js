@@ -25,6 +25,7 @@ const convertToDays = (periodType, timeToElapse) => {
       return timeToElapse;
   }
 };
+
 /**
  *
  * @param hospitalBeds
