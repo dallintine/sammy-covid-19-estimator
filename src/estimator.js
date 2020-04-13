@@ -19,7 +19,7 @@ const impactCases = (data) => {
   } = data;
   const currentlyInfected = reportedCases * 10;
   const timeInDays = convertToDays(periodType, timeToElapse);
-  const infectionsByRequestedTime = Math.tunc(currentlyInfected * (2 ** (timeInDays / 3)));
+  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** (timeInDays / 3)));
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
   const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
@@ -48,7 +48,7 @@ const severeImpactCases = (data) => {
   } = data;
   const currentlyInfected = reportedCases * 50;
   const timeInDays = convertToDays(periodType, timeToElapse);
-  const infectionsByRequestedTime = Math.tunc(currentlyInfected * (2 ** (timeInDays / 3)));
+  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** (timeInDays / 3)));
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
   const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
   const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
