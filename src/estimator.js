@@ -25,6 +25,17 @@ const convertToDays = (periodType, timeToElapse) => {
       return timeToElapse;
   }
 };
+/**
+ *
+ * @param hospitalBeds
+ * @param casesByTime
+ *
+ * Takes the number of hospitalBeds and cases by times and
+ * return the number of hosipita beds that will be availaible by requested time.
+ */
+const calcHospitalSpace = (hospitalBeds, casesByTime) => Math.trunc(
+  (hospitalBeds * 0.35) - casesByTime
+);
 
 const impactCases = (data) => {
   const {
@@ -38,8 +49,8 @@ const impactCases = (data) => {
   const timeInDays = Math.trunc(convertToDays(periodType, timeToElapse) / 3);
   const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** timeInDays));
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
-  const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
+  const sevCasByReqTim = severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const infByRT = infectionsByRequestedTime;
@@ -69,8 +80,8 @@ const severeImpactCases = (data) => {
   const timeInDays = Math.trunc(convertToDays(periodType, timeToElapse) / 3);
   const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** timeInDays));
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
-  const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByRequestedTime = hospitalBedsAvailable - severeCasesByRequestedTime;
+  const sevCasByReqTim = severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
   const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const infByRT = infectionsByRequestedTime;
