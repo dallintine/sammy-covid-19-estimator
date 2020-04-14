@@ -51,8 +51,10 @@ const impactCases = (data) => {
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
   const sevCasByReqTim = severeCasesByRequestedTime;
   const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
-  const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
+  const calcReqIcuCare = (severe) => Math.trunc(severe * 0.05);
+  const calcReqVent = (severe) => Math.trunc(severe * 0.02);
+  const casesForICUByRequestedTime = calcReqIcuCare(infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = calcReqVent(infectionsByRequestedTime);
   const infByRT = infectionsByRequestedTime;
   const tInDay = timeInDays;
   const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
@@ -82,8 +84,10 @@ const severeImpactCases = (data) => {
   const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
   const sevCasByReqTim = severeCasesByRequestedTime;
   const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
-  const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
+  const calcReqIcuCare = (severe) => Math.trunc(severe * 0.05);
+  const calcReqVent = (severe) => Math.trunc(severe * 0.02);
+  const casesForICUByRequestedTime = calcReqIcuCare(infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = calcReqVent(infectionsByRequestedTime);
   const infByRT = infectionsByRequestedTime;
   const tInDay = timeInDays;
   const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
