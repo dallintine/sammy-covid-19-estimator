@@ -1,13 +1,41 @@
+const convertMonthsToDays = (months) => months * 30;
+
+/**
+ *
+ * @param weeks
+ *
+ * Takes the number of weeks anc converts it to days
+ */
+const convertWeeksToDays = (weeks) => weeks * 7;
+
+/**
+ *
+ * @param periodType
+ * @param timeToElapse
+ *
+ * Takes the periodType and the timeToElapse and returns the days equivalent.
+ */
 const convertToDays = (periodType, timeToElapse) => {
   switch (periodType) {
     case 'months':
-      return timeToElapse * 30;
+      return convertMonthsToDays(timeToElapse);
     case 'weeks':
-      return timeToElapse * 7;
+      return convertWeeksToDays(timeToElapse);
     default:
       return timeToElapse;
   }
 };
+/**
+ *
+ * @param hospitalBeds
+ * @param casesByTime
+ *
+ * Takes the number of hospitalBeds and cases by times and
+ * return the number of hosipita beds that will be availaible by requested time.
+ */
+const calcHospitalSpace = (hospitalBeds, casesByTime) => Math.trunc(
+  (hospitalBeds * 0.35) - casesByTime
+);
 
 const impactCases = (data) => {
   const {
@@ -18,23 +46,28 @@ const impactCases = (data) => {
     region
   } = data;
   const currentlyInfected = reportedCases * 10;
-  const timeInDays = convertToDays(periodType, timeToElapse);
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3));
-  const severCasesByRequestedTime = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severCasesByRequestedTime;
-  const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
-  const dollerOut = region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * timeInDays;
-  const dollersInFlight = dollerOut.toFixed(2);
+  const timeInDays = Math.trunc(convertToDays(periodType, timeToElapse) / 3);
+  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** timeInDays));
+  const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+  const sevCasByReqTim = severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
+  const calcReqIcuCare = (severe) => Math.trunc(severe * 0.05);
+
+  const calcReqVent = (severe) => Math.trunc(severe * 0.02);
+  const casesForICUByRequestedTime = calcReqIcuCare(infectionsByRequestedTime);
+  const casesForVentilatorsByRequestedTime = calcReqVent(infectionsByRequestedTime);
+  const infByRT = infectionsByRequestedTime;
+  const tInDay = timeInDays;
+  const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
+  const dollarsInFlight = Math.trunc(dollerOut);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severCasesByRequestedTime,
-    hospitalBedsByResquestedTime,
+    severeCasesByRequestedTime,
+    hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorByRequestedTime,
-    dollersInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
@@ -47,23 +80,25 @@ const severeImpactCases = (data) => {
     region
   } = data;
   const currentlyInfected = reportedCases * 50;
-  const timeInDays = convertToDays(periodType, timeToElapse);
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.trunc(timeInDays / 3));
-  const severCasesByRequestedTime = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsAvailable = Math.trunc(totalHospitalBeds * 0.35);
-  const hospitalBedsByResquestedTime = hospitalBedsAvailable - severCasesByRequestedTime;
+  const timeInDays = Math.trunc(convertToDays(periodType, timeToElapse) / 3);
+  const infectionsByRequestedTime = Math.trunc(currentlyInfected * (2 ** timeInDays));
+  const severeCasesByRequestedTime = Math.trunc(0.15 * infectionsByRequestedTime);
+  const sevCasByReqTim = severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
-  const dollerOut = region.avgDailyIncomePopultion * region.avgDailyIncomeInUSD * timeInDays;
-  const dollersInFlight = dollerOut.toFixed(2);
+  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
+  const infByRT = infectionsByRequestedTime;
+  const tInDay = timeInDays;
+  const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
+  const dollarsInFlight = Math.trunc(dollerOut);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
-    severCasesByRequestedTime,
-    hospitalBedsByResquestedTime,
+    severeCasesByRequestedTime,
+    hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorByRequestedTime,
-    dollersInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
