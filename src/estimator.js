@@ -52,19 +52,19 @@ const impactCases = (data) => {
   const sevCasByReqTim = severeCasesByRequestedTime;
   const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
+  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const infByRT = infectionsByRequestedTime;
   const tInDay = timeInDays;
   const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
-  const dollersInFlight = Math.trunc(dollerOut);
+  const dollarsInFlight = Math.trunc(dollerOut);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorByRequestedTime,
-    dollersInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
@@ -83,19 +83,19 @@ const severeImpactCases = (data) => {
   const sevCasByReqTim = severeCasesByRequestedTime;
   const hospitalBedsByRequestedTime = calcHospitalSpace(totalHospitalBeds, sevCasByReqTim);
   const casesForICUByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.05);
-  const casesForVentilatorByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
+  const casesForVentilatorsByRequestedTime = Math.trunc(infectionsByRequestedTime * 0.02);
   const infByRT = infectionsByRequestedTime;
   const tInDay = timeInDays;
   const dollerOut = infByRT * region.avgDailyIncomePopulation * region.avgDailyIncomeInUSD * tInDay;
-  const dollersInFlight = Math.trunc(dollerOut);
+  const dollarsInFlight = Math.trunc(dollerOut);
   return {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
     hospitalBedsByRequestedTime,
     casesForICUByRequestedTime,
-    casesForVentilatorByRequestedTime,
-    dollersInFlight
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 };
 
